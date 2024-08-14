@@ -11,19 +11,27 @@ def rollDice(amount: int = 2) -> list[int]:
 
     return rolls
 
-
 def main():
     while True:
         try:
-            userInput = input("How many dice woukd you like to roll? ")
+            userInput = input("How many dice would you like to roll? (type 'exit' to quit) ")
 
             if userInput.lower() == 'exit':
                 break
 
-            print(*rollDice (int(userInput)), sep=', ')
+            dice_amount = int(userInput)
+            rolls = rollDice(dice_amount)
+
+            total_sum = sum(rolls)
+            print(*rolls)
+
+            # print(f"Rolls: ", ', ', {rolls})
+            print(f"Total Sum of rolls: {total_sum}")
+        
+
 
         except ValueError:
-            print("Enter a valid number")
+            print("Please enter a valid number or 'exit' to quit.")
 
 
 if __name__ == '__main__':
